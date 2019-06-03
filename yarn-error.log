@@ -31,7 +31,7 @@ npm manifest:
     "name": "webpackDemo",
     "version": "1.0.0",
     "description": "demo",
-    "main": "index.js",
+    "main": "layout.js",
     "scripts": {
       "build": "webpack --mode production",
       "dev": "webpack --mode development",
