@@ -1,37 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="b152c12d-bcc0-4ca0-aaee-68eb5eec9421" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common/css/common.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/css/normalize.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/footer/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/header/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/component/test/test.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/postcss.config.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/webpack.dev.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config/webpack.prod.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pages/layout/layout.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/footer/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/component/footer/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/footer/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/component/footer/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/header/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/component/header/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/webpack.config.js" beforeDir="false" afterPath="$PROJECT_DIR$/config/webpack.config.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dev-server.js" beforeDir="false" afterPath="$PROJECT_DIR$/dev-server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/detail.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/detail.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/js/detail.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/js/detail.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dist/js/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/js/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.bin/browserslist" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.bin/browserslist" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/.yarn-integrity" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/.yarn-integrity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/electron-to-chromium/full-chromium-versions.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/electron-to-chromium/full-chromium-versions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/electron-to-chromium/full-versions.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/electron-to-chromium/full-versions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/electron-to-chromium/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/electron-to-chromium/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/index/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/pages/index/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/layout/layout.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/layout/layout.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
-    </list>
+    <list default="true" id="b152c12d-bcc0-4ca0-aaee-68eb5eec9421" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/dist/" />
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -45,10 +15,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.gitignore">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="4" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/webpack.config.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="391">
-              <caret line="111" column="33" lean-forward="true" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
+            <state relative-caret-position="307">
+              <caret line="107" column="13" lean-forward="true" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
             </state>
           </provider>
         </entry>
@@ -112,6 +91,7 @@
         <option value="$PROJECT_DIR$/dist/index.html" />
         <option value="$PROJECT_DIR$/pages/layout/layout.js" />
         <option value="$PROJECT_DIR$/config/webpack.config.js" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -230,12 +210,12 @@
       <workItem from="1559206710364" duration="9289000" />
       <workItem from="1559274698242" duration="745000" />
       <workItem from="1559529033630" duration="1623000" />
-      <workItem from="1559539519453" duration="13783000" />
+      <workItem from="1559539519453" duration="13900000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="53731000" />
+    <option name="totallyTimeSpent" value="53848000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -301,9 +281,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/dist/layout.html" />
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/dist/layout/layout.js" />
     <entry file="file://$PROJECT_DIR$/dist/layout/layout.html" />
     <entry file="file://$PROJECT_DIR$/config/dist/layout/layout.html" />
@@ -569,8 +546,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/config/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="391">
-          <caret line="111" column="33" lean-forward="true" selection-start-line="111" selection-start-column="33" selection-end-line="111" selection-end-column="33" />
+        <state relative-caret-position="307">
+          <caret line="107" column="13" lean-forward="true" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="4" lean-forward="true" selection-start-line="2" selection-start-column="4" selection-end-line="2" selection-end-column="4" />
         </state>
       </provider>
     </entry>
