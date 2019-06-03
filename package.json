@@ -5,12 +5,13 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack --mode production --config ./config/webpack.config.js",
-    "dev": "webpack --mode development --config ./config/webpack.config.js",
+    "dev": "webpack --config ./config/webpack.config.js",
     "start": "webpack-dev-server --config ./config/webpack.config.js"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "autoprefixer": "^9.5.1",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-plugin-transform-runtime": "^6.23.0",
@@ -26,8 +27,11 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "jcy-loader": "^1.0.2",
-    "koa-webpack": "^5.2.3",
-    "koa2": "^2.0.0-alpha.7",
+    "less-loader": "^5.0.0",
+    "mini-css-extract-plugin": "^0.7.0",
+    "normalize.css": "^8.0.1",
+    "postcss-loader": "^3.0.0",
+    "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
     "webpack": "^4.32.2",
     "webpack-cli": "^3.3.2",

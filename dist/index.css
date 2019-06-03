@@ -1,0 +1,7 @@
+.header{
+    color: blue;
+}
+.footer{
+    color: pink;
+    transform: translate(100px);
+}

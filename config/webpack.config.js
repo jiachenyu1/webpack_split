@@ -5,7 +5,10 @@ const glob = require('glob');
 const path = require("path");
 const htmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
-const {CleanWebpackPlugin} = require('clean-webpack-plugin')
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const devConfig = require('./webpack.dev');
+const prodConfig = require('./webpack.prod');
 
 const getView = (globPath) => {
     let files = glob.sync(globPath);
@@ -25,6 +28,16 @@ const getView = (globPath) => {
     return entries;
 };
 
+function recursiveIssuer(m) {
+    if (m.issuer) {
+        return recursiveIssuer(m.issuer);
+    } else if (m.name) {
+        return m.name;
+    } else {
+        return false;
+    }
+}
+
 const pages = getView('./pages/**/*.html');
 const htmlWebpackPluginList = [];
 Object.entries(pages).forEach(item => {
@@ -35,6 +48,7 @@ Object.entries(pages).forEach(item => {
         template: `${pathname}`,
         hash: true,
         chunks: [htmlname],
+        inject: 'body',
         minify: {
             removeAttributeQuotes: true,
             removeComments: true,
@@ -45,18 +59,26 @@ Object.entries(pages).forEach(item => {
     }
     htmlWebpackPluginList.push(new htmlWebpackPlugin(conf))
 })
-module.exports = {
-    // entry: Object.values(getView('./pages/**/*.js')).concat('webpack-hot-middleware/client?timeout=20000&reload=true'),
+const config = {
     entry: getView('./pages/**/*.js'),
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'js/[name].js',
+        chunkFilename: '[name].js'
     },
     module: {
         rules: [
             {
                 test: /.css$/,
-                use: ['style-loader', 'css-loader'],
+                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+            },
+            {
+                test: /.scss$/,
+                use: ['style-loader', 'scss-loader', 'postcss-loader']
+            },
+            {
+                test: /.less$/,
+                use: ['style-loader', 'less-loader', 'postcss-loader']
             },
             {
                 test: /\.(jpg|png|jpeg)$/,
@@ -68,19 +90,42 @@ module.exports = {
             }
         ]
     },
+    optimization: {
+        splitChunks: {
+            cacheGroups: {
+                indexStyle: {
+                    name: 'index',
+                    chunks: 'all',
+                    enforce: true,
+                    test: /common/
+                },
+                detailStyle: {
+                    name: 'detail',
+                    chunks: 'all',
+                    enforce: true,
+                    test: (m, c, entry = 'detail') => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry
+                }
+            }
+        }
+    },
     plugins: [
         ...htmlWebpackPluginList,
         new webpack.HotModuleReplacementPlugin(),
         new webpack.NoEmitOnErrorsPlugin(),
         new CleanWebpackPlugin({
             verbose: true,
-            dry: true,
-            cleanAfterEveryBuildPatterns: [path.resolve(__dirname, '../dist')]
+            cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, '../dist')]
+        }),
+        new MiniCssExtractPlugin({
+            filename: '[name].css'
         })
     ],
     devServer: {
         hot: true,
-        contentBase: 'dist',//服务器监听目录
-        open: true //自动打开浏览器 打开url
-    },
+        hotOnly: true,
+        contentBase: path.resolve(__dirname, '../dist'),
+        watchContentBase: true
+    }
 };
+
+module.exports = Object.assign({}, process.env.NODE_ENv === 'production' ? prodConfig : devConfig, config);

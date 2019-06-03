@@ -1,3 +1,4 @@
 .footer{
-    color: red;
+    color: pink;
+    transform: translate(100px);
 }
