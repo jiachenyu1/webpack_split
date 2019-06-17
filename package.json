@@ -4,8 +4,8 @@
   "description": "demo",
   "main": "index.js",
   "scripts": {
-    "build": "webpack --mode production --config ./config/webpack.config.js",
-    "dev": "webpack --config ./config/webpack.config.js",
+    "build": "NODE_ENV=production webpack --config ./config/webpack.config.js",
+    "dev": "NODE_ENV=development webpack --config ./config/webpack.config.js",
     "start": "webpack-dev-server --config ./config/webpack.config.js"
   },
   "author": "",
@@ -38,5 +38,11 @@
     "webpack-dev-middleware": "^3.7.0",
     "webpack-dev-server": "^3.4.1",
     "webpack-hot-middleware": "^2.25.0"
-  }
+  },
+  "browserslist": [
+    "ie >= 8",
+    "iOS 7",
+    "Firefox > 20",
+    "Chrome > 56"
+  ]
 }

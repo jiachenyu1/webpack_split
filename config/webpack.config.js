@@ -9,24 +9,8 @@ const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devConfig = require('./webpack.dev');
 const prodConfig = require('./webpack.prod');
-
-const getView = (globPath) => {
-    let files = glob.sync(globPath);
-    let entries = {};
-    files.forEach(item => {
-        const dirname = path.dirname(item);//当前目录
-        const split = dirname.split('/');
-        const pathMiddleName = split[split.length - 1];
-        if (pathMiddleName != 'layout') {
-            entries[pathMiddleName] = [];
-            entries[pathMiddleName].push(item)
-            if (item.endsWith('.js')) {
-                entries[pathMiddleName].push('webpack-hot-middleware/client?timeout=20000&reload=true')
-            }
-        }
-    });
-    return entries;
-};
+const getView = require('./getView');
+console.log(__dirname)
 
 function recursiveIssuer(m) {
     if (m.issuer) {
@@ -60,7 +44,6 @@ Object.entries(pages).forEach(item => {
     htmlWebpackPluginList.push(new htmlWebpackPlugin(conf))
 })
 const config = {
-    entry: getView('./pages/**/*.js'),
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'js/[name].js',
@@ -69,15 +52,25 @@ const config = {
     module: {
         rules: [
             {
-                test: /.css$/,
-                use: [MiniCssExtractPlugin.loader, 'css-loader'],
+                test: /\.css$/,
+                use: ['css-loader', {
+                    loader: 'postcss-loader',
+                    options: {
+                        config: {
+                            path: './postcss.config.js'
+                        },
+                        plugins: [
+                            require('autoprefixer')({})
+                        ]
+                    }
+                }],
             },
             {
-                test: /.scss$/,
+                test: /\.scss$/,
                 use: ['style-loader', 'scss-loader', 'postcss-loader']
             },
             {
-                test: /.less$/,
+                test: /\.less$/,
                 use: ['style-loader', 'less-loader', 'postcss-loader']
             },
             {
@@ -87,27 +80,31 @@ const config = {
             {
                 test: /\.html$/,
                 use: ['jcy-loader', 'html-layout-loader']
-            }
+            },
+            {
+                test: /\.js$/,
+                exclude: /node_modules/,
+                loader: "babel-loader"
+            },
         ]
     },
-    optimization: {
-        splitChunks: {
-            cacheGroups: {
-                indexStyle: {
-                    name: 'index',
-                    chunks: 'all',
-                    enforce: true,
-                    test: /common/
-                },
-                detailStyle: {
-                    name: 'detail',
-                    chunks: 'all',
-                    enforce: true,
-                    test: (m, c, entry = 'detail') => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry
-                }
-            }
-        }
-    },
+    // optimization: {
+    //     splitChunks: {
+    //         cacheGroups: {
+    //             commonStyle: {
+    //                 name: 'common',
+    //                 chunks: 'all',
+    //                 test: /[\\/]common[\\/]css[\\/]/
+    //             },
+    //             detailStyle: {
+    //                 name: 'detail',
+    //                 chunks: 'all',
+    //                 enforce: true,
+    //                 test: (m, c, entry = 'detail') => m.constructor.name === 'CssModule' && recursiveIssuer(m) === entry
+    //             }
+    //         }
+    //     }
+    // },
     plugins: [
         ...htmlWebpackPluginList,
         new webpack.HotModuleReplacementPlugin(),
@@ -116,9 +113,9 @@ const config = {
             verbose: true,
             cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, '../dist')]
         }),
-        new MiniCssExtractPlugin({
-            filename: '[name].css'
-        })
+        // new MiniCssExtractPlugin({
+        //     filename: '/css/[name].css'
+        // })
     ],
     devServer: {
         hot: true,
@@ -128,4 +125,5 @@ const config = {
     }
 };
 
-module.exports = Object.assign({}, process.env.NODE_ENv === 'production' ? prodConfig : devConfig, config);
+console.log(process.env.NODE_ENV)
+module.exports = Object.assign({}, process.env.NODE_ENV === 'production' ? prodConfig : devConfig, config);
