@@ -1,3 +1,4 @@
 import commonJs from '../../common/js/common';
-import layout from '../layout/layout';
+import '../layout/layout';
 commonJs();
+

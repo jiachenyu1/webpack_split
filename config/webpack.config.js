@@ -10,7 +10,7 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const devConfig = require('./webpack.dev');
 const prodConfig = require('./webpack.prod');
 const getView = require('./getView');
-console.log(__dirname)
+// const DemoPlugin = require('./pluginDemo');
 
 function recursiveIssuer(m) {
     if (m.issuer) {
@@ -44,6 +44,7 @@ Object.entries(pages).forEach(item => {
     htmlWebpackPluginList.push(new htmlWebpackPlugin(conf))
 })
 const config = {
+    stats: 'errors-only',
     output: {
         path: path.resolve(__dirname, '../dist'),
         filename: 'js/[name].js',
@@ -108,11 +109,11 @@ const config = {
     plugins: [
         ...htmlWebpackPluginList,
         new webpack.HotModuleReplacementPlugin(),
-        new webpack.NoEmitOnErrorsPlugin(),
         new CleanWebpackPlugin({
             verbose: true,
             cleanOnceBeforeBuildPatterns: [path.resolve(__dirname, '../dist')]
         }),
+        // new DemoPlugin()
         // new MiniCssExtractPlugin({
         //     filename: '/css/[name].css'
         // })
@@ -125,5 +126,5 @@ const config = {
     }
 };
 
-console.log(process.env.NODE_ENV)
+// console.log(process.env.NODE_ENV)
 module.exports = Object.assign({}, process.env.NODE_ENV === 'production' ? prodConfig : devConfig, config);

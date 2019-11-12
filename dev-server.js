@@ -8,6 +8,8 @@ const complier = webpack(webpackConfig)
 const router = require('./config/route');
 const path = require('path');
 
+app.use('/static', express.static('./common'));
+
 app.use(webpackDevMiddleware(complier, {
     noInfo: true,
 }));
@@ -19,13 +21,13 @@ app.use(webpackHotMiddleware(complier, {
 }));
 
 Object.entries(router).forEach(item => {
-    console.log(item)
+    // console.log(item)
     let filename = path.join(complier.outputPath, item[1]);
-    console.log(filename)
+    // console.log(filename)
     // load template from
     app.get(item[0], function (req, res) {
         complier.outputFileSystem.readFile(filename, function (err, result) {
-            console.log(result)
+            // console.log(result)
             res.set('content-type', 'text/html');
             res.send(result);
             res.end();
